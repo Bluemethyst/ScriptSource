@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="static/css/index.css" />
+        <title>Create Paste</title>
+    </head>
+    <body>
+        <div id="title">
+            <h1>Create a New Paste</h1>
+        </div>
+        <div id="main">
+            <form action="/paste" method="post">
+                <textarea
+                    id="input-box"
+                    name="content"
+                    rows="10"
+                    cols="50"
+                    placeholder="Enter your text here..."
+                ></textarea>
+                <br />
+                <input id="input-button" type="submit" value="Save Paste" />
+            </form>
+        </div>
+    </body>
+</html>
