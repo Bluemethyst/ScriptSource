@@ -1,4 +1,8 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+try:
+    from flask import Flask, request, jsonify, render_template, redirect, url_for
+except ImportError:
+    import subprocess
+    subprocess.run("pip install Flask")
 from time import time, strftime, localtime
 import random
 import string
