@@ -21,13 +21,43 @@ body {
     color: var(--font-color);
 }
 
-#title,
-#output {
+#output-div,
+#title {
     background-color: var(--main-color-bg-2);
     justify-content: center;
     border-radius: 20px;
-    padding: 50px;
+    padding: 20px;
     text-align: center;
-    margin: 50px;
+    margin: 20px;
     width: 1000px;
+}
+
+#copy-button {
+    color: var(--font-color);
+    border-radius: 50px;
+    background-color: var(--main-color-bg-3);
+    border: none;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#copy-button:hover {
+    cursor: pointer;
+}
+
+#paste-content {
+    color: var(--font-color);
+    border-radius: 20px;
+    background-color: var(--main-color-bg-3);
+    border: none;
+    padding: 10px;
+    white-space: pre-wrap;
+}
+
+@media (max-width: 600px) {
+    #paste-content {
+        font-size: 1.5em;
+        padding: 15px;
+    }
 }

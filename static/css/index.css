@@ -26,19 +26,21 @@ body {
     background-color: var(--main-color-bg-2);
     justify-content: center;
     border-radius: 20px;
-    padding: 50px;
+    padding: 20px;
     text-align: center;
-    margin: 50px;
+    margin: 20px;
     width: 1000px;
 }
 
 #input-box {
-    color: var(--main-color-accent);
+    color: var(--font-color);
     border-radius: 20px;
     background-color: var(--main-color-bg-3);
     border: none;
     padding: 10px;
+    white-space: pre-wrap;
     resize: none;
+    width: 95%;
 }
 
 #input-box:focus {
@@ -46,7 +48,7 @@ body {
 }
 
 #input-button {
-    color: var(--main-color-accent);
+    color: var(--font-color);
     border-radius: 50px;
     background-color: var(--main-color-bg-3);
     border: none;
@@ -55,4 +57,14 @@ body {
 
 #input-button:focus {
     outline: none;
+}
+#input-button:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    #intput-box {
+        font-size: 1.5em;
+        padding: 15px;
+    }
 }

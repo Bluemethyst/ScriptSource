@@ -2,13 +2,74 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta name="description" content="{{ content }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ss.bluemethyst.dev/{{ id }}" />
+        <meta property="og:title" content="View Paste" />
+        <meta property="og:description" content="{{ content }}" />
+        <meta
+            property="twitter:url"
+            content="https://ss.bluemethyst.dev/{{ id }}"
+        />
+        <meta property="twitter:title" content="View Paste" />
+        <meta property="twitter:description" content="{{ content }}" />
+        <link
+            rel="icon"
+            href="{{ url_for('static', filename='img/favicon.ico') }}"
+        />
         <link rel="stylesheet" href="static/css/paste.css" />
         <title>View Paste</title>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Toastr style -->
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+            rel="stylesheet"
+        />
+
+        <!-- Toastr script -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     </head>
     <body>
         <div id="title">
             <h1>Paste Content</h1>
+            <h3>ScriptSource, a temporary text sharing website</h3>
+            <p>All pastes will be deleted after 48 hours</p>
         </div>
-        <pre id="output">{{ content }}</pre>
+        <div id="output-div">
+            <p
+                id="date-created"
+                title="This date has been converted to your local timezone"
+            >
+                {{ date_created }}
+            </p>
+            <pre id="paste-content">{{ content }}</pre>
+            <button id="copy-button" onclick="copyToClipboard()">Copy</button>
+            <script>
+                function copyToClipboard() {
+                    var copyText =
+                        document.getElementById("paste-content").innerText;
+                    navigator.clipboard.writeText(copyText).then(
+                        function () {
+                            console.log("Copying to clipboard was successful!");
+                            toastr.success("Copied to clipboard!");
+                        },
+                        function (err) {
+                            console.error("Could not copy text: ", err);
+                            toastr.error("Failed to copy text");
+                        }
+                    );
+                }
+            </script>
+        </div>
+
+        <script>
+            var epochTimestamp = {{ epoch_created_at }}; // Pass the epoch timestamp from the server to the client
+            var date = new Date(epochTimestamp * 1000); // Convert the epoch timestamp to milliseconds
+            var options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+            var localDateTime = date.toLocaleString('default', options); // Convert the date to the user's local timezone
+            document.getElementById('date-created').innerText = 'Script Created at: ' + localDateTime;
+        </script>
     </body>
 </html>

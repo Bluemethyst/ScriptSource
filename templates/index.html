@@ -2,12 +2,29 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta name="description" content="Create Temporary Pastes" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ss.bluemethyst.dev" />
+        <meta property="og:title" content="View Paste" />
+        <meta property="og:description" content="Create Temporary Pastes" />
+        <meta property="twitter:url" content="https://ss.bluemethyst.dev" />
+        <meta property="twitter:title" content="View Paste" />
+        <meta
+            property="twitter:description"
+            content="Create Temporary Pastes"
+        />
+        <link
+            rel="icon"
+            href="{{ url_for('static', filename='img/favicon.ico') }}"
+        />
         <link rel="stylesheet" href="static/css/index.css" />
         <title>Create Paste</title>
     </head>
     <body>
         <div id="title">
             <h1>Create a New Paste</h1>
+            <h3>ScriptSource, a temporary text sharing website</h3>
+            <p>All pastes will be deleted after 48 hours</p>
         </div>
         <div id="main">
             <form action="/paste" method="post">
